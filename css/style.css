@@ -49,10 +49,6 @@ header h1 {
   color: #e2c78e;
 }
 
-/* Hidden at the start. JavaScript shows it inside the rooms. */
-#backBtn {
-  display: none;
-}
 
 /* ===== Scenes ===== */
 /* Every scene is hidden. JavaScript shows one at a time. */
@@ -70,6 +66,31 @@ header h1 {
 /* The first scene shows when the page loads */
 #entrance {
   display: flex;
+}
+
+/* ===== Background photos ===== */
+#entrance,
+#hall,
+#booth,
+#lost,
+#platform {
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+#entrance {
+  background-image: url("../images/station-entrance.jpg");
+}
+
+#hall,
+#booth,
+#lost {
+  background-image: url("../images/station-hall.jpg");
+}
+
+#platform {
+  background-image: url("../images/train-platform.jpg");
 }
 
 /* ===== Card ===== */
@@ -131,16 +152,24 @@ button {
   color: #e9e6dc;
   font-size: 16px;
   cursor: pointer;
+  transition: background-color 0.2s ease, color 0.2s ease;
 }
 
-/* Small button in the top bar */
-button.small {
-  margin-top: 0;
-  padding: 6px 14px;
-  font-size: 14px;
+button:hover {
+  background: #8f2b23;
+}
+
+/* Back to the hall: sits at the bottom of each room */
+button.back {
+  margin-top: 24px;
   background: transparent;
   border: 1px solid #e2c78e;
   color: #e2c78e;
+}
+
+button.back:hover {
+  background: #e2c78e;
+  color: #1b1b1a;
 }
 
 /* ===== Hall ===== */
@@ -178,17 +207,151 @@ button.small {
   color: #e9e6dc;
 }
 
+.door:hover {
+  background: #e9e6dc;
+  color: #1b1b1a;
+}
+
+/* The closed gate does not light up */
 .locked {
   border: 2px dashed #6f716e;
   color: #8f918d;
 }
 
+.locked:hover {
+  background: transparent;
+  color: #8f918d;
+}
+
 .message {
-  min-height: 1.6em;
   color: #e2c78e;
 }
 
+.progress {
+  font-size: 14px;
+  color: #8f918d;
+}
+
+/* ===== Ticket Booth ===== */
+/* Hidden until the user reads it */
+.timetable {
+  display: none;
+  margin: 0 0 20px;
+  padding: 16px 20px;
+  border: 2px solid #e9e6dc;
+}
+
+.timetable p {
+  margin-bottom: 4px;
+}
+
+.timetable-title {
+  font-weight: bold;
+}
+
+.timetable-mark {
+  color: #e2c78e;
+  font-weight: bold;
+}
+
+/* ===== Waiting Room ===== */
+/* Starts dark. JavaScript changes the colour when the lamp is on. */
+#waiting {
+  background-color: #121212;
+}
+
+/* Hidden until the lamp is on and the user looks at it */
+.photo {
+  display: none;
+  margin: 0 0 20px;
+  padding: 24px 20px;
+  border: 10px solid #e9e6dc;
+  background: #4a4436;
+}
+
+.photo img {
+  display: block;
+  width: 100%;
+  margin-bottom: 14px;
+}
+
+/* The back of the photo shows after it is turned over */
+.photo-back {
+  display: none;
+  font-style: italic;
+  color: #e2c78e;
+}
+
+/* ===== Lost and Found ===== */
+/* These only appear after the drawer is open */
+#letterBtn,
+.letter {
+  display: none;
+}
+
+.letter {
+  margin: 0 0 20px;
+  padding: 20px 24px;
+  background: #e9e6dc;
+  color: #1b1b1a;
+  font-family: Georgia, serif;
+  font-style: italic;
+}
+
+/* ===== Platform ===== */
+.ending {
+  margin-top: 10px;
+  color: #e2c78e;
+}
+
+.ending p {
+  margin-bottom: 12px;
+}
+
+/* The note from the envelope: set apart like a separate piece of paper */
+.ending-note {
+  margin-top: 20px;
+  padding: 14px 18px;
+  border-left: 4px solid #e9e6dc;
+  background: rgba(233, 230, 220, 0.08);
+
+  font-family: Georgia, serif;
+  font-style: italic;
+  font-size: 17px;
+  color: #e9e6dc;
+}
+
+/* Only shows after an ending */
+#againBtn {
+  display: none;
+  padding: 12px 22px;
+  background: #b2392f;
+  color: #e9e6dc;
+  text-decoration: none;
+}
+
+/* The open gate is hidden until all three clues are found */
+#goPlatformOpen {
+  display: none;
+}
+
+/* The open gate is no longer dashed */
+.open {
+  border: 2px solid #e2c78e;
+  color: #e2c78e;
+}
+
+.open:hover {
+  background: #b2392f;
+  border-color: #b2392f;
+  color: #e9e6dc;
+}
+
 /* ===== Footer ===== */
+footer a {
+  color: #e2c78e;
+}
+
 footer {
   padding: 16px 24px;
   font-size: 12px;
@@ -209,10 +372,6 @@ footer {
 
   button {
     width: 100%;
-  }
-
-  button.small {
-    width: auto;
   }
 
   .door {

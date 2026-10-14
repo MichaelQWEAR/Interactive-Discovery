@@ -1,102 +1,211 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>The Last Train</title>
 
-  <link rel="stylesheet" href="css/style.css" />
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>The Last Train</title>
+
+    <link rel="stylesheet" href="css/style.css" />
 </head>
 
 <body>
-  <!-- Top bar -->
-  <header>
-    <h1>The Last Train</h1>
-    <button id="backBtn" class="small">Back to Hall</button>
-  </header>
+    <!-- Top bar -->
+    <header>
+        <h1>The Last Train</h1>
+    </header>
 
-  <!-- Scene 1: Entrance -->
-  <section id="entrance" class="scene">
-    <div class="card">
-      <h2>A ticket in your pocket</h2>
+    <!-- Scene 1: Entrance -->
+    <section id="entrance" class="scene">
+        <div class="card">
+            <h2>A ticket in your pocket</h2>
 
-      <p>
-        It is raining hard tonight. You reach into your coat pocket and find
-        an old train ticket you have never seen before.
-      </p>
-      <p>
-        There is no name on it, and no destination. Just one line, printed in
-        faded ink.
-      </p>
+            <p>
+                It is raining hard tonight. You reach into your coat pocket and find
+                an old train ticket you have never seen before.
+            </p>
+            <p>
+                There is no name on it, and no destination. Just one line, printed in
+                faded ink.
+            </p>
 
-      <div class="ticket">
-        <p class="stamp">Punched 11:47</p>
-        <p class="ticket-top">Admit one, platform 3</p>
-        <p class="ticket-main">Your last train leaves at 11:47.</p>
-        <p class="ticket-bottom">Destination: ________</p>
-      </div>
+            <div class="ticket">
+                <p class="stamp">Punched 11:47</p>
+                <p class="ticket-top">Admit one, platform 3</p>
+                <p class="ticket-main">Your last train leaves at 11:47.</p>
+                <p class="ticket-bottom">Destination: Unknown</p>
+            </div>
 
-      <p class="goal">Find out where this ticket will take you.</p>
+            <p class="goal">Find out where this ticket will take you.</p>
 
-      <button id="enterBtn">Enter the Station</button>
-    </div>
-  </section>
+            <button id="enterBtn">Enter the Station</button>
+        </div>
+    </section>
 
-  <!-- Scene 2: Main Hall -->
-  <section id="hall" class="scene">
-    <div class="card">
-      <h2>An empty station</h2>
+    <!-- Scene 2: Main Hall -->
+    <section id="hall" class="scene">
+        <div class="card">
+            <h2>An empty station</h2>
 
-      <div class="clock">11:47</div>
+            <div class="clock">11:47</div>
 
-      <p>
-        There is no one here. The big clock above the hall has stopped.
-        Three doors stand open, and the gate to the platform is shut.
-      </p>
-      <p>Where do you want to look first?</p>
+            <p>
+                There is no one here. The big clock above the hall has stopped.
+                Three doors stand open, and the gate to the platform is shut.
+            </p>
+            <p>Where do you want to look first?</p>
 
-      <div class="choices">
-        <button id="goBooth" class="door">Ticket Booth</button>
-        <button id="goWaiting" class="door">Waiting Room</button>
-        <button id="goLost" class="door">Lost and Found</button>
-        <button id="goPlatform" class="door locked">Platform (gate closed)</button>
-      </div>
+            <div class="choices">
+                <button id="goBooth" class="door">Ticket Booth</button>
+                <button id="goWaiting" class="door">Waiting Room</button>
+                <button id="goLost" class="door">Lost and Found</button>
+                <button id="goPlatform" class="door locked">Platform (gate closed)</button>
+                <button id="goPlatformOpen" class="door open">Platform (gate open)</button>
+            </div>
 
-      <p id="hallMessage" class="message"></p>
-    </div>
-  </section>
+            <p id="clueCount" class="progress">Clues found: 0 / 3</p>
+            <p id="itemList" class="progress">Items: none</p>
+            <p id="hallMessage" class="message"></p>
+        </div>
+    </section>
 
-  <!-- Scene 3: Ticket Booth -->
-  <section id="booth" class="scene">
-    <h2>Ticket Booth</h2>
-    <p>Ticket and timetable go here.</p>
-  </section>
+    <!-- Scene 3: Ticket Booth -->
+    <section id="booth" class="scene">
+        <div class="card">
+            <h2>The ticket booth</h2>
 
-  <!-- Scene 4: Waiting Room -->
-  <section id="waiting" class="scene">
-    <h2>Waiting Room</h2>
-    <p>Lamp, photo and bench go here.</p>
-  </section>
+            <p>
+                The window is dusty and the booth is dark. An old timetable is pinned
+                to the glass. Your ticket feels heavier in your hand here.
+            </p>
 
-  <!-- Scene 5: Lost and Found -->
-  <section id="lost" class="scene">
-    <h2>Lost and Found</h2>
-    <p>Locked drawer and letter go here.</p>
-  </section>
+            <div id="boothTicket" class="ticket">
+                <p class="stamp">Punched 11:47</p>
+                <p class="ticket-top">Admit one, platform 3</p>
+                <p class="ticket-main">Your last train leaves at 11:47.</p>
+                <p class="ticket-bottom">Destination: Unknown</p>
+            </div>
 
-  <!-- Scene 6: Platform -->
-  <section id="platform" class="scene">
-    <h2>The Platform</h2>
-    <p>Two endings go here.</p>
-  </section>
+            <div id="timetable" class="timetable">
+                <p class="timetable-title">Departures, 14 July 2006</p>
+                <p>9:15 &nbsp; Lakeshore</p>
+                <p>18:40 &nbsp; Union</p>
+                <p class="timetable-mark">23:47 &nbsp; The Beginning</p>
+            </div>
 
-  <!-- Bottom bar -->
-  <footer>
-    <p>
-      Photo credits: <a href="#">Name</a> on <a href="https://unsplash.com">Unsplash</a>
-    </p>
-  </footer>
+            <div class="choices">
+                <button id="flipTicket" class="door">Turn the ticket over</button>
+                <button id="readTimetable" class="door">Read the timetable</button>
+            </div>
 
-  <script src="js/script.js"></script>
+            <p id="flipResult" class="message"></p>
+            <p id="timetableResult" class="message"></p>
+
+            <button id="backFromBooth" class="back">Back to the hall</button>
+        </div>
+    </section>
+
+    <!-- Scene 4: Waiting Room -->
+    <section id="waiting" class="scene">
+        <div class="card">
+            <h2>The waiting room</h2>
+
+            <p id="waitingText">
+                It is almost too dark to see. You can make out a long wooden bench,
+                a desk lamp, and a small frame on the wall.
+            </p>
+
+            <div id="photo" class="photo">
+                <img src="images/family-photo.jpg" alt="An old family photograph">
+                <p id="photoFront">In the photo, the child holds a blue paper train.</p>
+                <p id="photoBack" class="photo-back">On the back: "Our first journey. 11:47 p.m."</p>
+            </div>
+
+            <div class="choices">
+                <button id="lampBtn" class="door">Turn on the lamp</button>
+                <button id="photoBtn" class="door">Look at the photograph</button>
+                <button id="benchBtn" class="door">Look under the bench</button>
+            </div>
+
+            <p id="photoResult" class="message"></p>
+            <p id="benchResult" class="message"></p>
+
+            <button id="backFromWaiting" class="back">Back to the hall</button>
+        </div>
+    </section>
+
+    <!-- Scene 5: Lost and Found -->
+    <section id="lost" class="scene">
+        <div class="card">
+            <h2>Lost and found</h2>
+
+            <p>
+                Shelves of forgotten umbrellas and single gloves. In the corner stands
+                an old wooden cabinet. Its label shows a small blue paper train.
+            </p>
+
+            <div id="letter" class="letter">
+                <p>To the grown-up me,</p>
+                <p>
+                    If you ever forget where you wanted to go, come back and find our
+                    blue paper train. Remember the kid who wanted to see the whole world.
+                </p>
+                <p>You, age ten</p>
+            </div>
+
+            <div class="choices">
+                <button id="drawerBtn" class="door">Open the drawer</button>
+                <button id="letterBtn" class="door">Read the letter</button>
+            </div>
+
+            <p id="drawerResult" class="message"></p>
+            <p id="letterResult" class="message"></p>
+            <p id="noteResult" class="message"></p>
+
+            <button id="backFromLost" class="back">Back to the hall</button>
+        </div>
+    </section>
+
+    <!-- Scene 6: Platform -->
+    <section id="platform" class="scene">
+        <div class="card">
+            <h2>The platform</h2>
+
+            <p>
+                The gate swings open. Rain taps on the roof, and the ticket in your
+                hand is no longer blank.
+            </p>
+
+            <div class="ticket">
+                <p class="stamp">Punched 11:47</p>
+                <p class="ticket-top">Admit one, platform 3</p>
+                <p class="ticket-main">Your last train leaves at 11:47.</p>
+                <p class="ticket-bottom">Destination: The Beginning</p>
+            </div>
+
+            <p>The train to your forgotten promise is waiting. What do you do?</p>
+
+            <div id="endingChoices" class="choices">
+                <button id="boardBtn" class="door">Board the train</button>
+                <button id="stayBtn" class="door">Stay on the platform</button>
+            </div>
+
+            <div id="endingText" class="ending"></div>
+            <a id="againBtn" href="index.html">Play again</a>
+        </div>
+    </section>
+
+    <!-- Bottom bar -->
+    <footer>
+        <p>
+            Photo credits: <a href="https://unsplash.com/@nikodemus777">Lutz Stallknecht</a>,
+            <a href="https://unsplash.com/@peaky_82">Peaky_82</a> and
+            <a href="https://unsplash.com/@adrianasaraceanu">Adriana Saraceanu</a> on
+            <a href="https://unsplash.com">Unsplash</a>
+        </p>
+    </footer>
+
+    <script src="js/script.js"></script>
 </body>
+
 </html>
